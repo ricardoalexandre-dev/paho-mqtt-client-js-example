@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>mqtt-demo: A simple web application that can subscribe to topics from an MQTT broker over websockets</title>
+      <link rel="stylesheet" href="style.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.2/mqttws31.min.js" type="text/javascript"></script>
+      <script src="demo.js" type="text/javascript"></script>
+   </head>
+   <body>
+      <div class="wrapper">
+         <h1>Mqtt-Demo</h1>
+         <form id="connection-information-form">
+             <b>Hostname or IP Address:</b>
+             <input id="host" type="text" name="host" value="broker.mqttdashboard.com" /><br>
+             <b>Port:</b>
+             <input id="port" type="text" name="port" value="8000" /><br>
+             <b>ClientID:</b>
+             <input id="clientId" type="text" name="clientId" value="clientId-0001" /><br>
+             <b>Username:</b>
+             <input id="username" type="text" name="username" value="" /><br>
+             <b>Password:</b>
+             <input id="password" type="text" name="password" value="" /><br>
+             <b>Keep Alive:</b>
+             <input id="keepAlive" type="text" name="keepAlive" value="60" /><br>
+             <b>Timeout:</b>
+             <input id="timeout" type="text" name="timeout" value="180" /><br>
+             <b>TLS:</b>
+             <input class="checky" id="tls" type="checkbox" /><br><br>
+             <b>Clean Session:</b>
+             <input class="checky" id="cleanSession" type="checkbox" checked="checked" disabled="disabled" /><br><br>
+             <b>Automatic Reconnect:</b>
+             <input class="checky" id="automaticReconnect" type="checkbox" /><br><br>
+             <b>Last-Will Topic:</b>
+             <input id="lwtTopic" type="text" name="lwtTopic" value="" /><br>
+             <b>Last-Will QoS:</b>
+             <select id="lwtQos">
+                 <option>0</option>
+                 <option>1</option>
+                 <option>2</option>
+             </select><br><br>
+             <b>Last-Will Retain:</b>
+             <input class="checky" id="lwtRetain" type="checkbox" /><br><br>
+             <b>Last-Will Messsage:</b>
+             <textarea id="lwtMessage"></textarea><br><br>
+             <b>Topic:</b>
+             <input id="topic" type="text" name="topic" value="myTopic/temperature"><br>
+             <b>QoS Topic:</b>
+             <select id="qos">
+                 <option>0</option>
+                 <option>1</option>
+                 <option>2</option>
+             </select><br><br>
+             <b>Publish Message:</b>
+             <input id="msgToPublish" type="text" name="msgToPublish" value=""><br>
+             <b>Automatic Stream:</b>
+             <input class="checky" id="automaticStream" type="checkbox" /><br><br>
+             <b>PublishQoS:</b>
+             <select id="msgQos">
+                 <option>0</option>
+                 <option>1</option>
+                 <option>2</option>
+             </select><br><br>
+             <b>Retain:</b>
+             <input class="checky" id="msgRetain" type="checkbox" /><br><br>
+
+             <input type="button" onclick="startConnect()" value="Connect">
+             <input type="button" onclick="subscribe()" value="Subscribe">
+             <input type="button" onclick="unsubscribe()" value="Unsubscribe">
+             <input type="button" onclick="publishMessage()" value="Publish">
+             <input type="button" onclick="publishStream()" value="Stream">
+             <input type="button" onclick="startDisconnect()" value="Disconnect">
+             <input type="button" onclick="clearHistory()" value="Clear">
+         </form>
+         <div id="messages"></div>
+      </div>
+   </body>
+</html>
